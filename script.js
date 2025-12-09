@@ -279,6 +279,12 @@ const CHAMP_DETAILS = {
     ability: "",
     stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" },unlockText:"Triển khai trong giao tranh: Viego 2 sao mang 2 trang bị"
   },
+  "Draven": {
+  cost: 3,
+  image: "assets/face/champ/tft16_draven.avif",
+  traits: "Noxus ,Cực Tốc ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
   "Warwick": {
     cost: 4,
     image: "assets/face/champ/tft16_warwick.avif",
