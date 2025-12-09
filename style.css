@@ -91,7 +91,7 @@ body { background-color: #000; color: white; font-family: sans-serif; }
   background: white !important; 
   border-color: white !important;
   color: black !important;
-  
+   
   /* Thêm chút hiệu ứng phát sáng cho xịn */
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); 
 }
