@@ -1,7 +1,5 @@
 // 1. KHO ẢNH ICON
 const TRAIT_ICONS = {
-  "AD": "/assets/ux/staticons/AD.svg",
-  "AP": "/assets/ux/staticons/AP.svg",
   "Bất Tử": "assets/ux/traiticons/immortal.png",
   "Chinh Phạt": "assets/ux/traiticons/vanquisher.png",
   "Cảnh Vệ": "assets/ux/traiticons/warden.png",
@@ -51,14 +49,17 @@ const TRAIT_ICONS = {
   "Tai Ương": "assets/ux/traiticons/riftscourge.png",
   "Cực Tốc": "assets/ux/traiticons/quickstriker.png"
 };
-
+const STAT_ICONS={
+    "AD": "/assets/ux/staticons/AD.svg",
+  "AP": "/assets/ux/staticons/AP.svg",
+}
 // 2. KHO DỮ LIỆU TƯỚNG
 const CHAMP_DETAILS = {
   "Caitlyn": {
     cost: 1,
     image: "assets/face/champ/tft16_caitlyn.avif",
     traits: "Piltover,Viễn Kích", 
-    ability: "Bắn đạn xuyên thấu gây 500 <img src='" + TRAIT_ICONS.AD + "' class='inline-icon'> sát thương vật lý.",
+    ability: "Bắn đạn xuyên thấu gây 500 <img src='" + STAT_ICONS.AD + "' class='inline-icon'> sát thương vật lý.",
     stats: { health: "500", mana: "0/80", armor: "15", mr: "15", dps: "31", speed: "0.7" }
   },
   "Anivia": {
@@ -171,7 +172,7 @@ const CHAMP_DETAILS = {
     cost: 2,
     image: "assets/face/champ/tft16_aphelios.avif",
     traits: "Targon",
-    ability: "Bắn pháo sáng gây 150 <img src='" + TRAIT_ICONS.AD + "' class='inline-icon'> + 50 <img src='" + TRAIT_ICONS.AP + "' class='inline-icon'> sát thương.",
+    ability: "Bắn pháo sáng gây 150 <img src='" + STAT_ICONS.AD + "' class='inline-icon'> + 50 <img src='" + STAT_ICONS.AP + "' class='inline-icon'> sát thương.",
     stats: { health: "650", mana: "40/100", armor: "20", mr: "20", dps: "45", speed: "0.75" }
   },
   "Cho'gath": {
@@ -289,7 +290,7 @@ const CHAMP_DETAILS = {
     cost: 4,
     image: "assets/face/champ/tft16_warwick.avif",
     traits: "Zaun,Cực Tốc",
-    ability: "Hồi máu liên tục theo đòn đánh gây <img src='" + TRAIT_ICONS.AD + "' class='inline-icon'>.",
+    ability: "Hồi máu liên tục theo đòn đánh gây <img src='" + STAT_ICONS.AD + "' class='inline-icon'>.",
     stats: { health: "900", mana: "0/0", armor: "40", mr: "40", dps: "60", speed: "0.8" },
     unlockText: "Triển khai: Jinx 1 sao + Vi 2 sao (Yêu cầu cấp 7)"
   },
@@ -297,7 +298,7 @@ const CHAMP_DETAILS = {
     cost: 3,
     image: "assets/face/champ/tft16_gwen.avif",
     traits: "Đảo Bóng Đêm,Nhiễu Loạn",
-    ability: "Lướt tới và cắt kéo gây sát thương chuẩn dựa trên <img src='" + TRAIT_ICONS.AP + "' class='inline-icon'>.",
+    ability: "Lướt tới và cắt kéo gây sát thương chuẩn dựa trên <img src='" + STAT_ICONS.AP + "' class='inline-icon'>.",
     stats: { health: "800", mana: "0/20", armor: "30", mr: "30", dps: "50", speed: "0.8" },
     unlockText: "Thu thập 20 Linh Hồn Đảo Bóng Đêm"
   },
@@ -305,7 +306,7 @@ const CHAMP_DETAILS = {
     cost: 5,
     image: "assets/face/champ/tft16_aatrox.avif",
     traits: "Darkin,Quỷ Kiếm,Đồ Tể",
-    ability: "Hóa quỷ, hút máu toàn phần và gây sát thương <img src='" + TRAIT_ICONS.AD + "' class='inline-icon'> diện rộng.",
+    ability: "Hóa quỷ, hút máu toàn phần và gây sát thương <img src='" + STAT_ICONS.AD + "' class='inline-icon'> diện rộng.",
     stats: { health: "1100", mana: "0/60", armor: "60", mr: "60", dps: "80", speed: "0.85" },
     unlockText: "Một tướng có 40% Hút Máu Toàn Phần (Yêu cầu cấp 8)"
   },
@@ -313,7 +314,7 @@ const CHAMP_DETAILS = {
     cost: 7,
     image: "assets/face/champ/tft16_baronnashor.avif",
     traits: "Hư Không,Tai Ương",
-    ability: "Triệu hồi Baron Nashor hất tung và làm choáng kẻ địch gây sát thương <img src='" + TRAIT_ICONS.AP + "' class='inline-icon'>.",
+    ability: "Triệu hồi Baron Nashor hất tung và làm choáng kẻ địch gây sát thương <img src='" + STAT_ICONS.AP + "' class='inline-icon'>.",
     stats: { health: "3000", mana: "50/150", armor: "70", mr: "70", dps: "120", speed: "0.8" },
     unlockText: "Triển khai 7 tướng Hư Không khác nhau (Yêu cầu cấp 10)"
   }
