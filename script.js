@@ -1,8 +1,8 @@
 // 1. KHO ẢNH ICON
 const TRAIT_ICONS = {
-  "AD": "/assets/ux/staticons /AD.svg",
-  "AP": "/assets/ux/staticons /AP.svg",
-  "Bất Tử": "assets/ux/traiticons/immortal.png ",
+  "AD": "/assets/ux/staticons/AD.svg",
+  "AP": "/assets/ux/staticons/AP.svg",
+  "Bất Tử": "assets/ux/traiticons/immortal.png",
   "Chinh Phạt": "assets/ux/traiticons/vanquisher.png",
   "Cảnh Vệ": "assets/ux/traiticons/warden.png",
   "Dũng Sĩ": "assets/ux/traiticons/juggernaut.png",
@@ -62,18 +62,222 @@ const CHAMP_DETAILS = {
     stats: { health: "500", mana: "0/80", armor: "15", mr: "15", dps: "31", speed: "0.7" }
   },
   "Anivia": {
-  cost: 1,
-  image: "assets/face/champ/tft16_anivia.avif",
-  traits: "Freljord, Thuật Sĩ",
-  ability: "",
-  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
-},
+    cost: 1,
+    image: "assets/face/champ/tft16_anivia.avif",
+    traits: "Freljord,Thuật Sĩ",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Briar": {
+    cost: 1,
+    image: "assets/face/champ/tft16_briar.avif",
+    traits: "Noxus,Dũng Sĩ,Đồ Tể",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Blitzcrank": {
+    cost: 1,
+    image: "assets/face/champ/tft16_blitzcrank.avif",
+    traits: "Zaun,Dũng Sĩ",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Illaoi": {
+    cost: 1,
+    image: "assets/face/champ/tft16_illaoi.avif",
+    traits: "Bilgewater,Đấu Sĩ",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Jarvan IV": {
+    cost: 1,
+    image: "assets/face/champ/tft16_jarvaniv.avif",
+    traits: "Demacia,Vệ Quân",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Jhin": {
+    cost: 1,
+    image: "assets/face/champ/tft16_jhin.avif",
+    traits: "Ionia,Xạ Thủ",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Kog'Maw": {
+    cost: 1,
+    image: "assets/face/champ/tft16_kogmaw.avif",
+    traits: "Hư Không,Viễn Kích",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Lulu": {
+    cost: 1,
+    image: "assets/face/champ/tft16_lulu.avif",
+    traits: "Yordle,Pháp Sư",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Qiyana": {
+    cost: 1,
+    image: "assets/face/champ/tft16_qiyana.avif",
+    traits: "Ixtal,Đồ Tể",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Rumble": {
+    cost: 1,
+    image: "assets/face/champ/tft16_rumble.avif",
+    traits: "Yordle,Vệ Quân",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Shen": {
+    cost: 1,
+    image: "assets/face/champ/tft16_shen.avif",
+    traits: "Ionia,Đấu Sĩ",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Sona": {
+    cost: 1,
+    image: "assets/face/champ/tft16_sona.avif",
+    traits: "Demacia,Thuật Sĩ",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Viego": {
+    cost: 1,
+    image: "assets/face/champ/tft16_viego.avif",
+    traits: "Đảo Bóng Đêm,Cực Tốc",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Ashe": {
+    cost: 1,
+    image: "assets/face/champ/tft16_ashe.avif",
+    traits: "Freljord,Cực Tốc",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Bard": {
+    cost: 2,
+    image: "assets/face/champ/tft16_bard.avif",
+    traits: "Ông Bụt",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" },
+    unlockText: "Đổi lại 4 lần trước vòng đi chợ giai đoạn 2"
+  },
   "Aphelios": {
     cost: 2,
     image: "assets/face/champ/tft16_aphelios.avif",
     traits: "Targon",
     ability: "Bắn pháo sáng gây 150 <img src='" + TRAIT_ICONS.AD + "' class='inline-icon'> + 50 <img src='" + TRAIT_ICONS.AP + "' class='inline-icon'> sát thương.",
     stats: { health: "650", mana: "40/100", armor: "20", mr: "20", dps: "45", speed: "0.75" }
+  },
+  "Cho'gath": {
+    cost: 2,
+    image: "assets/face/champ/tft16_chogath.avif",
+    traits: "Hư Không,Dũng Sĩ",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Ekko": {
+    cost: 2,
+    image: "assets/face/champ/tft16_ekko.avif",
+    traits: "Zaun,Nhiễu Loạn",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Graves": {
+    cost: 2,
+    image: "assets/face/champ/tft16_graves.avif",
+    traits: "Bilgewater,Xạ Thủ",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }, unlockText: "Triển khai trong giao tranh: Twisted Fate mang 2 trang bị"
+  },
+  "Neeko": {
+    cost: 2,
+    image: "assets/face/champ/tft16_neeko.avif",
+    traits: "Ixtal,Vệ Quân",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Orianna": {
+    cost: 2,
+    image: "assets/face/champ/tft16_orianna.avif",
+    traits: "Piltover,Thuật Sĩ",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" },unlockText: "Triển khai trong giao tranh: 3 tướng Piltover khác nhau"
+  },
+  "Poppy": {
+    cost: 2,
+    image: "assets/face/champ/tft16_poppy.avif",
+    traits: "Demacia,Vệ Quân",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }, unlockText: "Triển khai trong giao tranh: Tướng Demacia hoặc tướng Yordle mang 2 trang bị"
+  },
+  "Yasuo": {
+    cost: 2,
+    image: "assets/face/champ/tft16_yasuo.avif",
+    traits: "Ionia,Đồ Tể",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Sion": {
+    cost: 2,
+    image: "assets/face/champ/tft16_sion.avif",
+    traits: "Noxus,Đấu Sĩ",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Rek'Sai": {
+    cost: 2,
+    image: "assets/face/champ/tft16_reksai.avif",
+    traits: "Hư Không,Chinh Phạt",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Tryndamere": {
+    cost: 2,
+    image: "assets/face/champ/tft16_tryndamere.avif",
+    traits: "Freljord,Đồ Tể",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" },unlockText:"Triển khai trong giao tranh: Ashe mang 2 trang bị "
+  },
+  "Teemo": {
+    cost: 2,
+    image: "assets/face/champ/tft16_teemo.avif",
+    traits: "Yordle,Viễn Kích",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Tristana": {
+    cost: 2,
+    image: "assets/face/champ/tft16_tristana.avif",
+    traits: "Yordle,Xạ Thủ",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Twisted Fate": {
+    cost: 2,
+    image: "assets/face/champ/tft16_twistedfate.avif",
+    traits: "Bilgewater,Cực Tốc",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Xin Zhao": {
+    cost: 2,
+    image: "assets/face/champ/tft16_xinzhao.avif",
+    traits: "Demacia,Ionia,Vệ Quân",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+  },
+  "Yorick": {
+    cost: 2,
+    image: "assets/face/champ/tft16_yorick.avif",
+    traits: "Đảo Bóng Đêm,Cảnh Vệ",
+    ability: "",
+    stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" },unlockText:"Triển khai trong giao tranh: Viego 2 sao mang 2 trang bị"
   },
   "Warwick": {
     cost: 4,
