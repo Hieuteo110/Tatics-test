@@ -61,6 +61,13 @@ const CHAMP_DETAILS = {
     ability: "Bắn đạn xuyên thấu gây 500 <img src='" + TRAIT_ICONS.AD + "' class='inline-icon'> sát thương vật lý.",
     stats: { health: "500", mana: "0/80", armor: "15", mr: "15", dps: "31", speed: "0.7" }
   },
+  "Anivia": {
+  cost: 1,
+  image: "assets/face/champ/tft16_anivia.avif",
+  traits: "Freljord, Thuật Sĩ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
+},
   "Aphelios": {
     cost: 2,
     image: "assets/face/champ/tft16_aphelios.avif",
