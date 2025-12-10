@@ -66,7 +66,7 @@ function showPopup(name, clickedElement) {
   document.getElementById('m-name').innerText = name;
   document.getElementById('m-image').src = data.image;
   document.getElementById('m-cost').innerText = data.cost;
-  document.getElementById('m-ability').innerHTML = data.ability;
+  document.getElementById('m-ability').innerHTML =formatstats(data.ability);
 
   // Icon Hệ Tộc
   const traitsContainer = document.getElementById('m-traits');
