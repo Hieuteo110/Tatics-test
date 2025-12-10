@@ -48,3 +48,14 @@ const TRAIT_ICONS = {
   "Tai Ương": "assets/ux/traiticons/riftscourge.png",
   "Cực Tốc": "assets/ux/traiticons/quickstriker.png"
 };
+function formatTraits(text) {
+  if (!text) return "";
+  
+  for (const [name, path] of Object.entries(TRAIT_ICONS)) {
+    const placeholder = `[${name}]`;
+    const imgTag = `<img src="${path}" class="inline-icon" alt="${name}">`;
+    text = text.split(placeholder).join(imgTag);
+  }
+  
+  return text;
+}

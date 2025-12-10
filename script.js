@@ -1,6 +1,12 @@
 // --- BIẾN TOÀN CỤC ---
 let currentFilterCost = 0; // 0 = All
 let currentSearchKeyword = '';
+function formatTotal(text) {
+  if (!text) return "";
+  text = formatStats(text); 
+  text = formatTraits(text);
+  return text;
+}
 
 // 3. HÀM RENDER (Vẽ tướng)
 function renderChampions() {
@@ -66,7 +72,7 @@ function showPopup(name, clickedElement) {
   document.getElementById('m-name').innerText = name;
   document.getElementById('m-image').src = data.image;
   document.getElementById('m-cost').innerText = data.cost;
-  document.getElementById('m-ability').innerHTML =formatstats(data.ability);
+  document.getElementById('m-ability').innerHTML =formatTotal(data.ability);
 
   // Icon Hệ Tộc
   const traitsContainer = document.getElementById('m-traits');

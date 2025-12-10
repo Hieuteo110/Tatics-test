@@ -10,7 +10,7 @@ const CHAMP_DETAILS = {
     cost: 1,
     image: "assets/face/champ/tft16_anivia.avif",
     traits: "Freljord,Thuật Sĩ",
-    ability: "",
+    ability: "[Freljord]",
     stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
   },
   "Briar": {
