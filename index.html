@@ -69,35 +69,5 @@
 <script src="data/champs.js"></script>
 <script src="data/traits.js"></script>
   <script src="script.js"></script>
-  <script>
-const HOME_PATH = "/"; 
-
-  document.addEventListener("DOMContentLoaded", function() {
-    
-    // Chỉ chạy logic này khi đang ở trang chủ
-    // Bạn có thể tùy chỉnh điều kiện kiểm tra này cho đúng với web của bạn
-    if (window.location.pathname === HOME_PATH || window.location.pathname === "/index.html") {
-      
-      // 1. Đẩy một trạng thái ảo vào lịch sử để "chặn" nút Back
-      history.pushState(null, document.title, location.href);
-
-      // 2. Lắng nghe sự kiện khi người dùng ấn nút Back (popstate)
-      window.addEventListener('popstate', function (event) {
-        
-        // 3. Hiện thông báo xác nhận
-        let roiKhoiApp = confirm("Bạn có muốn thoát ứng dụng không?");
-
-        if (roiKhoiApp) {
-          // Nếu chọn OK: Lùi lại lịch sử thật để Appilix tự động đóng app
-          // (Vì lúc này stack lịch sử đã hết)
-          history.back(); 
-        } else {
-          // Nếu chọn Cancel: Lại đẩy trạng thái ảo vào để chặn tiếp lần sau
-          history.pushState(null, document.title, location.href);
-        }
-      });
-    }
-  });
-</script>
 </body>
 </html>
