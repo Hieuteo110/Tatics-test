@@ -10,7 +10,7 @@ const CHAMP_DETAILS = {
     cost: 1,
     image: "assets/face/champ/tft16_anivia.avif",
     traits: "Freljord,Thuật Sĩ",
-    ability: "[Freljord]",
+    ability: "[Freljord",
     stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }
   },
   "Briar": {
@@ -420,6 +420,42 @@ const CHAMP_DETAILS = {
   cost: 4,
   image: "assets/face/champ/tft16_skarner.avif",
   traits: "Ixtal ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+    "Swain": {
+  cost: 4,
+  image: "assets/face/champ/tft16_swain.avif",
+  traits: "Noxus, Dũng Sĩ, Pháp Sư ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+    "Taric": {
+  cost: 4,
+  image: "assets/face/champ/tft16_taric.avif",
+  traits: "Targon ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+    "Sứ Giả Khe Nứt": {
+  cost: 4,
+  image: "assets/face/champ/tft16_riftherald.avif",
+  traits: "Hư Không, Đấu Sĩ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+    "Veigar": {
+  cost: 4,
+  image: "assets/face/champ/tft16_veigar.avif",
+  traits: "Yordle, Pháp Sư ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+    "Yone": {
+  cost: 4,
+  image: "assets/face/champ/tft16_Yone.avif",
+  traits: "Ionia, Đồ Tể ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+    "Yunara": {
+  cost: 4,
+  image: "assets/face/champ/tft16_Yunara.avif",
+  traits: "Ionia, Cực Tốc",
   ability: "",
   stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
   "Warwick": {
