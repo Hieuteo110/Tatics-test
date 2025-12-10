@@ -448,13 +448,13 @@ const CHAMP_DETAILS = {
   stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
     "Yone": {
   cost: 4,
-  image: "assets/face/champ/tft16_Yone.avif",
+  image: "assets/face/champ/tft16_yone.avif",
   traits: "Ionia, Đồ Tể ",
   ability: "",
   stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
     "Yunara": {
   cost: 4,
-  image: "assets/face/champ/tft16_Yunara.avif",
+  image: "assets/face/champ/tft16_yunara.avif",
   traits: "Ionia, Cực Tốc",
   ability: "",
   stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
