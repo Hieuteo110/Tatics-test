@@ -10,4 +10,6 @@ const STAT_ICONS=
   "MR": "/assets/ux/staticons/MagicResist.svg",
   "scaleDA": "/assets/ux/staticons/scaleDA.svg",
   "scaleSV": "/assets/ux/staticons/scaleSV.svg",
+  "mana": "/assets/ux/staticons/Mana.svg", 
+  "Range": "/assets/ux/staticons/Range.svg",
 }
