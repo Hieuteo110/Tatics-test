@@ -77,7 +77,13 @@ function showPopup(name, clickedElement) {
   document.getElementById('m-name').innerHTML = name;
   document.getElementById('m-image').src = data.image;
   document.getElementById('m-cost').innerHTML = data.cost;
-  document.getElementById('m-ability').innerHTML =formatTotal(data.ability);
+    // --- XỬ LÝ KỸ NĂNG ---
+  const sName = data.skillName || "Kỹ năng"; 
+  const sIcon = data.skillIcon || data.image;
+  document.getElementById('m-skill-name').innerText = sName;
+  document.getElementById('m-skill-icon').src = sIcon;
+  document.getElementById('m-ability').innerHTML = formatTotal(data.ability);
+
 
   // Icon Hệ Tộc
   const traitsContainer = document.getElementById('m-traits');
@@ -99,24 +105,14 @@ function showPopup(name, clickedElement) {
     }
   });
 
-  // 1. Máu & Năng lượng
-  document.getElementById('m-H').innerHTML = formatTotal(data.stats.health);
+  document.getElementById('m-H'). innerHTML= formatTotal(data.stats.health);
   document.getElementById('m-mana').innerHTML = formatTotal(data.stats.mana);
-
-  // 2. Giáp (AM) & Kháng Phép (MR) - Sửa id thành m-AM và m-MR
   document.getElementById('m-AM').innerHTML = formatTotal(data.stats.armor);
   document.getElementById('m-MR').innerHTML = formatTotal(data.stats.mr);
-
-  // 3. Vật lý (AD) & Phép (AP)
-  // Lưu ý: data.stats.damage là đúng nếu trong champs.js bạn dùng key 'damage'
   document.getElementById('m-AD').innerHTML = formatTotal(data.stats.damage);
   document.getElementById('m-AP').innerHTML = formatTotal(data.stats.ap);
-
-  // 4. Tốc đánh (AS) & Tầm đánh (Range)
   document.getElementById('m-AS').innerHTML = formatTotal(data.stats.speed);
-  // Sửa id thành m-Range và data thành data.stats.range (chữ r thường trong file champs.js)
   document.getElementById('m-Range').innerHTML = formatTotal(data.stats.range);
-
 
   const unlockBox = document.getElementById('m-unlock-note');
   if (data.unlockText) {

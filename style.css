@@ -1,4 +1,14 @@
-/* --- CẤU TRÚC CƠ BẢN (MOBILE FIRST) --- */
+/* --- MÀU CHỮ --- */
+.text-blue {
+  color: #33d9ff; 
+  font-weight: bold; 
+}
+.text-gold {
+  color: #ffdd60; 
+  font-weight: bold; 
+}
+
+/* --- CẤU TRÚC CƠ BẢN --- */
 * { 
   margin: 0; padding: 0; box-sizing: border-box;
   /* Chặn highlight màu xanh khi chạm vào */
@@ -199,9 +209,48 @@ body { background-color: #000; color: white; font-family: sans-serif; }
 border-radius: 100%;
 object-fit: cover; }
 
-.section-title { font-size: 16px; font-weight: bold; border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 10px; margin-top: 15px; color: #ddd; }
+.section-title { font-size: 16px; font-weight: bold; border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 10px; margin-top: 15px; color: #fff;  /* <--- Đổi thành màu trắng tinh */
+  text-transform: uppercase;
+  letter-spacing: 0.5px; }
 .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .stat-item { background: #222; padding: 8px; border-radius: 5px; display: flex; justify-content: space-between; }
 .stat-label { color: #888; font-size: 12px; }
 .stat-value { font-weight: bold; font-size: 13px; }
 .ability-text { font-size: 13px; color: #ccc; line-height: 1.4; }
+/* --- GIAO DIỆN KỸ NĂNG (SKILL) --- */
+.skill-container {
+  margin-top: 10px;
+  background-color: #222;
+  border-radius: 12px;
+  padding: 15px;
+  border: 1px solid #555;
+}
+
+
+.skill-name-title {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.skill-row {
+  display: flex;       /* Xếp hàng ngang */
+  gap: 12px;           /* Khoảng cách giữa ảnh và chữ */
+  align-items: flex-start; /* Căn thẳng hàng bên trên */
+}
+
+.skill-img {
+  width: 48px; 
+  height: 48px;
+  border: 1px solid #666; /* Viền mỏng như trong ảnh */
+  flex-shrink: 0;         /* Không bị bóp méo */
+}
+
+.skill-desc-text {
+  font-size: 14px;
+  color: #ccc;            /* Màu chữ xám nhạt */
+  line-height: 1.4;       /* Khoảng cách dòng dễ đọc */
+  flex: 1;              
+}
+.skill-desc-text b { color: #fff; } 

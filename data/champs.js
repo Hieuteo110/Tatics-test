@@ -4,8 +4,11 @@ const CHAMP_DETAILS = {
     cost: 1,
     image: "assets/face/champ/anivia.avif",
     traits: "Freljord,Thuật Sĩ",
-    ability: "Tung ra một mảnh băng...",
-    stats: { health: "[H]500", mana: "[mana]80", armor: "[AM]15", mr: "[MR]15", damage: "[AD]31", ap: "[AP]100", speed: "[AS]0.7", range: "[Range]4" }
+    ability: "Tung ra một mảnh băng vào mục tiêu, gây <span class='text-blue'>325 / 455 / 650</span>[AP] sát thương phép. Nếu chúng bị <span class= 'text-gold'>Tê Tái</span>, sát thương sẽ Chí Mạng.<br><br><i>Tê Tái: Giảm Tốc Độ Đánh</i>",
+    stats: { health: "[H]500", mana: "[mana]80", armor: "[AM]15", mr: "[MR]15", damage: "[AD]31", ap: "[AP]100", speed: "[AS]0.7", range: "[Range]4",
+    },
+    skillName: "Tê Cóng",
+   skillIcon: "assets/skills/anivia.png"
   },
   "Caitlyn": {
     cost: 1,
