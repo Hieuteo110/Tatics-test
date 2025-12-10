@@ -20,9 +20,9 @@ const CHAMP_DETAILS = {
     cost: 1,
     image: "assets/face/champ/briar.avif",
     traits: "Noxus,Dũng Sĩ,Đồ Tể",
-    ability: "",skillName: "Tướng",
+    ability: "Nhảy tới kẻ địch xa nhất trong phạm vi 2 ô. Trong 4 giây tăng thêm Tốc Độ Di Chuyển, <span class='text-gold'>25%[AD]</span> Sức Mạnh Công Kích và <span class='text-blue'>300%[AP]</span> Tốc Độ Đánh giảm dần.",skillName: "Cuồng Huyết",
    
-    stats: { health: "[H]500", mana: "[mana]80", armor: "[AM]15", mr: "[MR]15", damage: "[AD]31", ap: "[AP]100", speed: "[AS]0.7", range: "[Range]1" }
+    stats: { health: "[H]650/1170/2106", mana: "[mana]0/40", armor: "[AM]35", mr: "[MR]35", damage: "[AD]42/63/95", ap: "[AP]100", speed: "[AS]0.75", range: "[Range]1" }
   },
   "Blitzcrank": {
     cost: 1,
@@ -59,10 +59,10 @@ const CHAMP_DETAILS = {
   "Kog'Maw": {
     cost: 1,
     image: "assets/face/champ/kogmaw.avif",
-    traits: "Hư Không,Viễn Kích",
-    ability: "",skillName: "Tướng",
+    traits: "Hư Không,Viễn Kích, Pháp Sư",
+    ability: "Gây <span class='text-blue'>140/200/300[AP]</span> sát thương phép lên mục tiêu và giảm Giáp & Kháng Phép của chúng đi <span class='text-gold'>8/10/15[AM][MR]</span>. Các kẻ địch liền kề chịu 50% sát thương và hiệu ứng.",skillName: "Phun axit",
    
-    stats: { health: "[H]500", mana: "[mana]80", armor: "[AM]15", mr: "[MR]15", damage: "[AD]31", ap: "[AP]100", speed: "[AS]0.7", range: "[Range]3" }
+    stats: { health: "[H]500/900/1620", mana: "[mana]0/30", armor: "[AM]15", mr: "[MR]15", damage: "[AD]20/30/45", ap: "[AP]100", speed: "[AS]0.7", range: "[Range]6" }
   },
   "Lulu": {
     cost: 1,
@@ -92,7 +92,7 @@ const CHAMP_DETAILS = {
     cost: 1,
     image: "assets/face/champ/shen.avif",
     traits: "Ionia,Đấu Sĩ",
-    ability: "",skillName: "Tướng",
+    ability: "Trao <span class='text-blue'>250/325/425[AP]</span> Lá Chắn cho đơn vị này và 1 đồng minh chịu sát thương gần đó trong 4 giây.",skillName: "Nhất Thống",
    
     stats: { health: "[H]500", mana: "[mana]80", armor: "[AM]15", mr: "[MR]15", damage: "[AD]31", ap: "[AP]100", speed: "[AS]0.6", range: "[Range]1" }
   },
