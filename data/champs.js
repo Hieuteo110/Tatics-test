@@ -482,6 +482,115 @@ const CHAMP_DETAILS = {
     stats: { health: "1100", mana: "0/60", armor: "60", mr: "60", dps: "80", speed: "0.85" },
     unlockText: "Một tướng có 40% Hút Máu Toàn Phần (Yêu cầu cấp 8)"
   },
+    "Annie": {
+  cost: 5,
+  image: "assets/face/champ/tft16_annie.avif",
+  traits: "Đứa Trẻ Bóng Tối, Pháp Sư ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Azir": {
+  cost: 5,
+  image: "assets/face/champ/tft16_azir.avif",
+  traits: "Hoàng Đế, Shurima, Nhiễu Loạn ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Fiddlesticks": {
+  cost: 5,
+  image: "assets/face/champ/tft16_fiddlesticks.avif",
+  traits: "Bù Nhìn, Chinh Phạt ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Galio": {
+  cost: 5,
+  image: "assets/face/champ/tft16_galio.avif",
+  traits: "Demacia, Siêu Hùng ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Kindred": {
+  cost: 5,
+  image: "assets/face/champ/tft16_kindred.avif",
+  traits: "Vĩnh Hằng, Cực Tốc",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Lucian & Senna": {
+  cost: 5,
+  image: "assets/face/champ/tft16_luciansenna.avif",
+  traits: "Xạ Thủ, Linh Hồn ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Mel": {
+  cost: 5,
+  image: "assets/face/champ/tft16_mel.avif",
+  traits: "Noxus, Nhiễu Loạn ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Ornn": {
+  cost: 5,
+  image: "assets/face/champ/tft16_ornn.avif",
+  traits: "Thần Rèn, Cảnh Vệ ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Sett": {
+  cost: 5,
+  image: "assets/face/champ/tft16_sett.avif",
+  traits: "Ionia, Đại Ca ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Shyvana": {
+  cost: 5,
+  image: "assets/face/champ/tft16_shyvana.avif",
+  traits: "Long Nữ, Dũng Sĩ ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "T-Hex": {
+  cost: 5,
+  image: "assets/face/champ/tft16_thex.avif",
+  traits: "Cơ Giáp Hex, Piltover, Xạ Thủ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Tahm Kench": {
+  cost: 5,
+  image: "assets/face/champ/tft16_tahmkench.avif",
+  traits: "Bilgewater, Đấu Sĩ, Phàm Ăn ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+  
+      "Thresh": {
+  cost: 5,
+  image: "assets/face/champ/tft16_thresh.avif",
+  traits: "Đảo Bóng Đêm, Cảnh Vệ ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Tibbers": {
+  cost: 5,
+  image: "assets/face/champ/tft16_annietibbers.avif",
+  traits: "Pháp Sư ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Volibear": {
+  cost: 5,
+  image: "assets/face/champ/tft16_volibear.avif",
+  traits: "Freljord, Đấu Sĩ ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Xerath": {
+  cost: 5,
+  image: "assets/face/champ/tft16_xerath.avif",
+  traits: "Shurima, Thăng Hoa ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Ziggs": {
+  cost: 5,
+  image: "assets/face/champ/tft16_ziggs.avif",
+  traits: "Yordle,Zaun, Viễn Kích ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+      "Zilean": {
+  cost: 5,
+  image: "assets/face/champ/tft16_zilean.avif",
+  traits: "Giám Hộ, Thuật Sĩ ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
   "Baron": {
     cost: 7,
     image: "assets/face/champ/tft16_baronnashor.avif",
@@ -489,5 +598,35 @@ const CHAMP_DETAILS = {
     ability: "Triệu hồi Baron Nashor hất tung và làm choáng kẻ địch gây sát thương [AP].",
     stats: { health: "3000", mana: "50/150", armor: "70", mr: "70", dps: "120", speed: "0.8" },
     unlockText: "Triển khai 7 tướng Hư Không khác nhau (Yêu cầu cấp 10)"
-  }
+  },
+      "Aurelion Sol": {
+  cost: 7,
+  image: "assets/face/champ/tft16_aurelionsol.avif",
+  traits: "Ác Long, Targon ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+    "Brock": {
+  cost: 7,
+  image: "assets/face/champ/tft16_brock.avif",
+  traits: "Ixtal ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+    "Ryze": {
+  cost: 7,
+  image: "assets/face/champ/tft16_ryze.avif",
+  traits: "Cổ Ngữ ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+    "Sylas": {
+  cost: 7,
+  image: "assets/face/champ/tft16_sylas.avif",
+  traits: "Kẻ Phá Xiềng, Pháp Sư, Vệ Quân ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
+    "Zaahen": {
+  cost: 7,
+  image: "assets/face/champ/tft16_zaahen.avif",
+  traits: "Darkin, Bất Tử, Ionia,Cảnh Vệ,Demacia ",
+  ability: "",
+  stats: { health: "500", mana: "80", armor: "15", mr: "15", dps: "31", speed: "0" }},
 };
