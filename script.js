@@ -1,7 +1,8 @@
 // --- BIẾN TOÀN CỤC ---
-let currentFilterCost = 0; // 0 = All
+let currentFilterCost = 0; 
 let currentSearchKeyword = '';
-//2. Hàm formatTotal
+
+// --- HÀM FORMAT TỔNG ---
 function formatTotal(text) {
   if (!text) return "";
   const ALL_ICONS = { ...STAT_ICONS, ...TRAIT_ICONS };
@@ -13,17 +14,28 @@ function formatTotal(text) {
   return text;
 }
 
-// 3. HÀM RENDER (Vẽ tướng)
+// --- HÀM TỰ ĐỘNG TẠO LINK SKILL (MỚI) ---
+function getAutoSkillIcon(champImagePath) {
+  if (!champImagePath) return "";
+  // Lấy tên file: "assets/face/champ/wukong.avif" -> "wukong.avif"
+  const fileName = champImagePath.split('/').pop();
+  // Bỏ đuôi: "wukong"
+  let cleanName = fileName.split('.')[0];
+  // Viết hoa chữ đầu: "Wukong"
+  cleanName = cleanName.charAt(0).toUpperCase() + cleanName.slice(1);
+  // Trả về: "assets/skills/TFT16_Wukong.jpg"
+  return `assets/skills/TFT16_${cleanName}.jpg`;
+}
+
+// 1. RENDER
 function renderChampions() {
   const container = document.getElementById('grid-container');
   if (!container) return;
   container.innerHTML = ''; 
 
   for (const [name, data] of Object.entries(CHAMP_DETAILS)) {
-    // --- BỘ LỌC ---
     if (currentFilterCost !== 0 && data.cost !== currentFilterCost) continue;
     if (currentSearchKeyword && !name.toLowerCase().includes(currentSearchKeyword)) continue;
-    // -------------
 
     let costClass = `cost${data.cost}`;
     if (data.unlockText) costClass += 'lock'; 
@@ -42,27 +54,20 @@ function renderChampions() {
   }
 }
 
-// 4. LOGIC LỌC COST (Khi bấm nút 1, 2, 3...)
+// 2. FILTER
 function filterCost(cost) {
-  currentFilterCost = cost; // Lưu giá tiền đang chọn
-
-  // Cập nhật giao diện nút bấm (Active)
+  currentFilterCost = cost;
   document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-  
-  // Tìm nút tương ứng để active
   if (cost === 0) document.querySelector('.btn-all').classList.add('active');
   else document.querySelector(`.btn-cost${cost}`).classList.add('active');
-
-  // Vẽ lại danh sách
   renderChampions();
 }
 
-// 5. HÀM HIỂN THỊ POPUP
+// 3. POPUP (Đã tích hợp tự động ảnh skill)
 function showPopup(name, clickedElement) {
   const modal = document.getElementById('champ-modal');
   if (!modal) return;
   
-  // Hiệu ứng phóng to từ vị trí bấm
   if (clickedElement) {
     const rect = clickedElement.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
@@ -74,18 +79,29 @@ function showPopup(name, clickedElement) {
   const data = CHAMP_DETAILS[name];
   if (!data) return;
 
+  // Header
   document.getElementById('m-name').innerHTML = name;
   document.getElementById('m-image').src = data.image;
-  document.getElementById('m-cost').innerHTML = data.cost;
-    // --- XỬ LÝ KỸ NĂNG ---
-  const sName = data.skillName || "Kỹ năng"; 
-  const sIcon = data.skillIcon || data.image;
+  
+  // --- XỬ LÝ KỸ NĂNG (TỰ ĐỘNG HÓA) ---
+  const sName = data.skillName || "Kỹ năng";
+  
+  // Tự động sinh link ảnh skill nếu trong dữ liệu không có
+  let sIcon = data.skillIcon;
+  if (!sIcon) {
+    sIcon = getAutoSkillIcon(data.image);
+  }
+
   document.getElementById('m-skill-name').innerText = sName;
   document.getElementById('m-skill-icon').src = sIcon;
+  // Xử lý lỗi nếu ảnh skill tự sinh không tồn tại (Fallback về ảnh tướng)
+  document.getElementById('m-skill-icon').onerror = function() {
+      this.src = data.image; 
+  };
+
   document.getElementById('m-ability').innerHTML = formatTotal(data.ability);
 
-
-  // Icon Hệ Tộc
+  // Hệ Tộc
   const traitsContainer = document.getElementById('m-traits');
   traitsContainer.innerHTML = ''; 
   const traitsList = data.traits.split(','); 
@@ -105,14 +121,16 @@ function showPopup(name, clickedElement) {
     }
   });
 
-  document.getElementById('m-H'). innerHTML= formatTotal(data.stats.health);
-  document.getElementById('m-mana').innerHTML = formatTotal(data.stats.mana);
-  document.getElementById('m-AM').innerHTML = formatTotal(data.stats.armor);
-  document.getElementById('m-MR').innerHTML = formatTotal(data.stats.mr);
-  document.getElementById('m-AD').innerHTML = formatTotal(data.stats.damage);
-  document.getElementById('m-AP').innerHTML = formatTotal(data.stats.ap);
-  document.getElementById('m-AS').innerHTML = formatTotal(data.stats.speed);
-  document.getElementById('m-Range').innerHTML = formatTotal(data.stats.range);
+  // Thông số
+  const s = data.stats || {};
+  document.getElementById('m-H').innerHTML = formatTotal(s.health || "-");
+  document.getElementById('m-mana').innerHTML = formatTotal(s.mana || "-");
+  document.getElementById('m-AM').innerHTML = formatTotal(s.armor || "-");
+  document.getElementById('m-MR').innerHTML = formatTotal(s.mr || "-");
+  document.getElementById('m-AD').innerHTML = formatTotal(s.damage || "-");
+  document.getElementById('m-AP').innerHTML = formatTotal(s.ap || "-");
+  document.getElementById('m-AS').innerHTML = formatTotal(s.speed || "-");
+  document.getElementById('m-Range').innerHTML = formatTotal(s.range || "-");
 
   const unlockBox = document.getElementById('m-unlock-note');
   if (data.unlockText) {
@@ -125,13 +143,13 @@ function showPopup(name, clickedElement) {
   modal.classList.add('active');
 }
 
-// 6. ĐÓNG POPUP
+// 4. CLOSE
 function closePopup() {
   const modal = document.getElementById('champ-modal');
   if (modal) modal.classList.remove('active');
 }
 
-// 7. KHỞI CHẠY APP
+// 5. INIT
 document.addEventListener('DOMContentLoaded', function() {
   renderChampions();
   
@@ -141,7 +159,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (event.target == document.getElementById('champ-modal')) closePopup();
   };
 
-  // Logic Tìm kiếm
   const searchBtn = document.getElementById('search-btn');
   const searchInput = document.getElementById('search-input');
 
