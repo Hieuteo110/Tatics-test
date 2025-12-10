@@ -1,10 +1,15 @@
 // --- BIẾN TOÀN CỤC ---
 let currentFilterCost = 0; // 0 = All
 let currentSearchKeyword = '';
+//2. Hàm formatTotal
 function formatTotal(text) {
   if (!text) return "";
-  text = formatStats(text); 
-  text = formatTraits(text);
+  const ALL_ICONS = { ...STAT_ICONS, ...TRAIT_ICONS };
+  for (const [name, path] of Object.entries(ALL_ICONS)) {
+    const placeholder = `[${name}]`;
+    const imgTag = `<img src="${path}" class="inline-icon" alt="${name}">`;
+    text = text.split(placeholder).join(imgTag);
+  }
   return text;
 }
 
