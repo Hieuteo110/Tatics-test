@@ -7,7 +7,10 @@
   color: #ffdd60; 
   font-weight: bold; 
 }
-
+.text-orange {
+  color: #FF9933; 
+  font-weight: bold; 
+}
 /* --- CẤU TRÚC CƠ BẢN --- */
 * { 
   margin: 0; padding: 0; box-sizing: border-box;

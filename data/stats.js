@@ -12,4 +12,5 @@ const STAT_ICONS=
   "scaleSV": "/assets/ux/staticons/scaleSV.svg",
   "mana": "/assets/ux/staticons/Mana.svg", 
   "Range": "/assets/ux/staticons/Range.svg",
+"Souls": "/assets/ux/staticons/souls.png", 
 }

@@ -5,7 +5,7 @@ const CHAMP_DETAILS = {
     image: "assets/face/champ/anivia.avif",
     traits: "Freljord,Thuật Sĩ",
     ability: "Tung ra một mảnh băng vào mục tiêu, gây <span class='text-blue'>325 / 455 / 650</span>[AP] sát thương phép. Nếu chúng bị <span class= 'text-gold'>Tê Tái</span>, sát thương sẽ Chí Mạng.<br><br><i>Tê Tái: Giảm Tốc Độ Đánh</i>",
-    stats: { health: "[H]500", mana: "[mana]80", armor: "[AM]15", mr: "[MR]15", damage: "[AD]31", ap: "[AP]100", speed: "[AS]0.7", range: "[Range]4",
+    stats: { health: "[H]500/900/1260", mana: "[mana]0/40", armor: "[AM]20", mr: "[MR]20", damage: "[AD]30/45/68", ap: "[AP]100", speed: "[AS]0.7", range: "[Range]4",
     },
     skillName: "Tê Cóng",
   },
@@ -44,9 +44,9 @@ const CHAMP_DETAILS = {
     cost: 1,
     image: "assets/face/champ/jarvaniv.avif",
     traits: "Demacia,Vệ Quân",
-    ability: "",skillName: "Tướng",
+    ability: "Nhận <span class='text-gold'> 350/425/500[AP]</span> Lá Chắn trong 4 giây. Tăng cho tất cả đồng minh <span class='text-gold'>20%/25%/50%[AP]</span> Tốc Độ Đánh trong 4 giây.",skillName: "Hoàng Kì Demacia",
    
-    stats: { health: "[H]500", mana: "[mana]80", armor: "[AM]15", mr: "[MR]15", damage: "[AD]31", ap: "[AP]100", speed: "[AS]0.6", range: "[Range]1" }
+    stats: { health: "[H]700/1260/2268", mana: "[mana]30/100", armor: "[AM]40", mr: "[MR]40", damage: "[AD]55/83/124", ap: "[AP]100", speed: "[AS]0.6", range: "[Range]1" }
   },
   "Jhin": {
     cost: 1,
@@ -94,7 +94,7 @@ const CHAMP_DETAILS = {
     traits: "Ionia,Đấu Sĩ",
     ability: "Trao <span class='text-blue'>250/325/425[AP]</span> Lá Chắn cho đơn vị này và 1 đồng minh chịu sát thương gần đó trong 4 giây.",skillName: "Nhất Thống",
    
-    stats: { health: "[H]500", mana: "[mana]80", armor: "[AM]15", mr: "[MR]15", damage: "[AD]31", ap: "[AP]100", speed: "[AS]0.6", range: "[Range]1" }
+    stats: { health: "[H]700/1260/2268", mana: "[mana]30/90", armor: "[AM]40", mr: "[MR]40", damage: "[AD]65/98/146", ap: "[AP]100", speed: "[AS]0.65", range: "[Range]1" }
   },
   "Sona": {
     cost: 1,
@@ -108,12 +108,12 @@ const CHAMP_DETAILS = {
     cost: 1,
     image: "assets/face/champ/viego.avif",
     traits: "Đảo Bóng Đêm,Cực Tốc",
-    ability: "",skillName: "Tướng",
+    ability: "Nội Tại: Nhận <span class='text-gold'>10%[Souls]</span> Tốc Độ Đánh.<br><br>Kích Hoạt: Gây <span class='text-orange'>55/85/125[AD]</span> sát thương vật lý lên mục tiêu. Trong thời gian còn lại của giao tranh, đòn tấn công của Viego gây thêm <span class='text-blue'>18/27/42[AP]</span> sát thương phép có cộng dồn.",skillName: "Lưỡi Gươm Suy Vong",
    
-    stats: { health: "[H]500", mana: "[mana]80", armor: "[AM]15", mr: "[MR]15", damage: "[AD]31", ap: "[AP]100", speed: "[AS]0.7", range: "[Range]1" }
+    stats: { health: "[H]650/1170/2160", mana: "[mana]0/30", armor: "[AM]35", mr: "[MR]35", damage: "[AD]40/60/90", ap: "[AP]100", speed: "[AS]0.75", range: "[Range]1" }
   },
   "Ashe": {
-    cost: 1,
+    cost: 2,
     image: "assets/face/champ/ashe.avif",
     traits: "Freljord,Cực Tốc",
     ability: "",skillName: "Tướng",
