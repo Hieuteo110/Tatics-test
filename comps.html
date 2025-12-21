@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TFT Guide - Đội Hình Meta</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="left-section">
+      <i class="fas fa-arrow-left icon-menu" onclick="window.location.href='index.html'"></i>
+      <h1 class="page-title">Đội Hình Meta</h1>
+    </div>
+    <div class="right-section">
+      <span class="patch-badge">Patch 16.1c</span>
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="update-notice">
+      <i class="fas fa-info-circle"></i>
+      <span>Cập nhật: 21/12/2025 | Nguồn: MetaTFT</span>
+    </div>
+
+    <div id="comps-container" class="comps-list"></div>
+  </div>
+
+  <div id="comp-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeCompModal()">&times;</span>
+      
+      <div class="modal-header-comp">
+        <h2 id="modal-comp-name">Tên Đội Hình</h2>
+        <button class="copy-btn" onclick="copyTeamCode()" style="margin-top:10px; width:100%">
+          <i class="fas fa-copy"></i> Sao chép mã
+        </button>
+      </div>
+
+      <div class="section-title">HƯỚNG DẪN CHƠI</div>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <h4>Early Game</h4><p id="guide-early"></p>
+        </div>
+        <div class="guide-card">
+          <h4>Mid Game</h4><p id="guide-mid"></p>
+        </div>
+        <div class="guide-card">
+          <h4>Late Game</h4><p id="guide-late"></p>
+        </div>
+        <div class="guide-card">
+          <h4>Positioning</h4><p id="guide-pos"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav-menu">
+    <a href="index.html" class="nav-item">
+      <i class="fas fa-users"></i><span>Tướng</span>
+    </a>
+    <a href="comps.html" class="nav-item active">
+      <i class="fas fa-trophy"></i><span>Đội Hình</span>
+    </a>
+  </nav>
+
+  <script src="data/api-manager.js"></script>
+  <script src="data/meta.js"></script>
+  <script>
+    let CHAMP_DATA = {}; // Chứa dữ liệu chuẩn từ API
+    let currentCompCode = '';
+
+    async function loadData() {
+      try {
+        // Gọi hàm loadAllData() giống hệt trang index.html để đảm bảo đồng bộ
+        const data = await window.DataDragonAPI.loadAllData();
+        // Lưu dữ liệu champions vào biến toàn cục
+        CHAMP_DATA = data.champions; 
+        renderComps();
+      } catch (error) {
+        console.error('Lỗi tải dữ liệu:', error);
+      }
+    }
+
+    // --- HÀM LẤY ẢNH THÔNG MINH (FIX LỖI ẢNH) ---
+    function getChampImage(metaName) {
+      // 1. Nếu tên khớp 100% (Ví dụ: "Azir" == "Azir")
+      if (CHAMP_DATA[metaName]) {
+        return CHAMP_DATA[metaName].image;
+      }
+
+      // 2. Nếu tên không khớp (Ví dụ: meta là "AnnieTibbers", API là "Annie")
+      // Ta duyệt qua toàn bộ API để tìm xem có tên nào nằm trong tên meta không
+      const metaNameClean = metaName.toLowerCase();
+      
+      for (const [apiName, champData] of Object.entries(CHAMP_DATA)) {
+        const apiNameClean = apiName.toLowerCase();
+        
+        // Nếu "annietibbers" có chứa "annie" -> Lấy ảnh Annie
+        // Hoặc nếu "jarvaniv" chứa "jarvan"
+        if (metaNameClean.includes(apiNameClean) || apiNameClean.includes(metaNameClean)) {
+          return champData.image;
+        }
+      }
+
+      // 3. Nếu vẫn không thấy, trả về ảnh rỗng
+      return 'assets/no-image.png'; 
+    }
+
+    function renderComps() {
+      const container = document.getElementById('comps-container');
+      container.innerHTML = '';
+
+      if (!window.META_COMPS) return;
+
+      window.META_COMPS.forEach(comp => {
+        const card = document.createElement('div');
+        card.className = 'comp-item';
+        card.onclick = () => showCompModal(comp);
+
+        const header = document.createElement('div');
+        header.className = 'comp-item-header';
+        header.innerHTML = `
+          <div class="comp-title">
+            <h3>${comp.name}</h3>
+            
+            <div style="display:flex; align-items:center;">
+              <span class="tier-badge tier-${comp.tier.toLowerCase()}">${comp.tier}</span>
+              <button class="quick-copy-btn" onclick="quickCopy(event, '${comp.copyCode}', this)">
+                 <i class="fas fa-copy"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="comp-stats-row">
+            <div class="stat-pill"><span class="label">Avg:</span><span class="value">${comp.avgPlace}</span></div>
+            <div class="stat-pill"><span class="label">Pick:</span><span class="value">${comp.playRate}%</span></div>
+            <div class="stat-pill"><span class="label">Diff:</span><span class="value" style="color:#ccc">${comp.difficulty}</span></div>
+          </div>
+        `;
+
+        const champsGrid = document.createElement('div');
+        champsGrid.className = 'comp-champs-full';
+        
+        comp.champions.forEach(champ => {
+          // Gọi hàm lấy ảnh thông minh ở trên
+          const imgUrl = getChampImage(champ.name);
+          
+          const champDiv = document.createElement('div');
+          champDiv.className = `comp-champ cost${champ.cost}`;
+          champDiv.innerHTML = `<img src="${imgUrl}" alt="${champ.name}" loading="lazy">`;
+          champsGrid.appendChild(champDiv);
+        });
+
+        card.appendChild(header);
+        card.appendChild(champsGrid);
+        container.appendChild(card);
+      });
+    }
+
+    // Copy nhanh
+    function quickCopy(event, code, btnElement) {
+      event.stopPropagation();
+      if (!code) return;
+
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(code);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+
+      const icon = btnElement.querySelector('i');
+      icon.className = 'fas fa-check';
+      btnElement.style.color = '#44ff44';
+
+      setTimeout(() => {
+        icon.className = 'fas fa-copy';
+        btnElement.style.color = '';
+      }, 1500);
+    }
+
+    function showCompModal(comp) {
+      const modal = document.getElementById('comp-modal');
+      currentCompCode = comp.copyCode;
+      document.getElementById('modal-comp-name').textContent = comp.name;
+      document.getElementById('guide-early').textContent = comp.guide.early;
+      document.getElementById('guide-mid').textContent = comp.guide.mid;
+      document.getElementById('guide-late').textContent = comp.guide.late;
+      document.getElementById('guide-pos').textContent = comp.guide.positioning;
+      modal.classList.add('active');
+    }
+
+    function closeCompModal() {
+      document.getElementById('comp-modal').classList.remove('active');
+    }
+
+    function copyTeamCode() {
+      quickCopy({stopPropagation:()=>{}}, currentCompCode, document.querySelector('.copy-btn'));
+    }
+
+    window.onclick = function(event) {
+      if (event.target == document.getElementById('comp-modal')) closeCompModal();
+    };
+
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>

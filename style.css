@@ -216,3 +216,292 @@ body { background-color: #000; color: white; font-family: sans-serif; }
   transition: all 0.2s; cursor: pointer; border-radius: 10px;
 }
 .nav-item.active { color: #ffb93b; background: rgba(255, 185, 59, 0.1); }
+/* ============================================
+   CSS ĐỘI HÌNH - GIỐNG METATFT
+   Thay thế phần CSS đội hình cũ
+   ============================================ */
+
+.patch-badge {
+  background: #ffb93b;
+  color: #000;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.update-notice {
+  background: #222;
+  border-left: 3px solid #ffb93b;
+  padding: 12px 15px;
+  margin: 15px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.update-notice i {
+  color: #ffb93b;
+}
+
+/* === COMPS LIST (GIỐNG METATFT) === */
+.comps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 15px 15px 15px;
+}
+
+.comp-item {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+  border: 2px solid #333;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.comp-item:active {
+  transform: scale(0.98);
+  border-color: #ffb93b;
+}
+
+/* Header */
+.comp-item-header {
+  padding: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.comp-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.comp-title h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #fff;
+}
+
+.tier-badge {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tier-s { background: #ff4444; color: #fff; }
+.tier-a { background: #ff9944; color: #fff; }
+.tier-b { background: #ffdd44; color: #000; }
+
+.comp-stats-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.stat-pill {
+  background: #222;
+  padding: 5px 10px;
+  border-radius: 12px;
+  display: flex;
+  gap: 5px;
+  font-size: 12px;
+}
+
+.stat-pill .label {
+  color: #888;
+}
+
+.stat-pill .value {
+  color: #ffb93b;
+  font-weight: bold;
+}
+
+.stat-pill.difficulty {
+  color: #aaa;
+}
+
+.stat-pill.difficulty i {
+  color: #ffb93b;
+}
+
+/* Champions Grid (HIỂN THỊ TẤT CẢ) */
+.comp-champs-full {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 5px;
+  padding: 10px;
+  background: #0a0a0a;
+}
+
+.comp-champ {
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.comp-champ img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Viền màu theo cost */
+.comp-champ.cost1 { border-color: #808080; }
+.comp-champ.cost2 { border-color: #11b288; }
+.comp-champ.cost3 { border-color: #207ac7; }
+.comp-champ.cost4 { border-color: #c440da; }
+.comp-champ.cost5 { border-color: #ffb93b; }
+
+/* === MODAL === */
+.modal-header-comp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.modal-header-comp h2 {
+  margin: 0;
+  font-size: 22px;
+  flex: 1;
+}
+
+.copy-btn {
+  background: #ffb93b;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.copy-btn:active {
+  transform: scale(0.95);
+}
+
+/* Guide Grid */
+.guide-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.guide-card {
+  background: #222;
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 3px solid #ffb93b;
+}
+
+.guide-icon {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.guide-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #ffb93b;
+}
+
+.guide-card p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+/* Carries List (KHÔNG CÓ SAO) */
+.carries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.carry-row {
+  background: #222;
+  border: 2px solid #444;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.carry-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  border: 2px solid #ffb93b;
+  object-fit: cover;
+}
+
+.carry-details {
+  flex: 1;
+}
+
+.carry-details h4 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #fff;
+}
+
+.carry-items-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.item-tag {
+  background: #333;
+  color: #ddd;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  border: 1px solid #555;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  .comp-champs-full {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+/* --- NÚT COPY (GIAO DIỆN MỚI) --- */
+.quick-copy-btn {
+  background: transparent; /* Nền trong suốt */
+  border: none;            /* Bỏ viền */
+  color: #888;             /* Màu xám mặc định */
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.2s; 
+  font-size: 16px;         /* Icon to hơn chút */
+  margin-left: 5px;        /* Cách lề trái */
+  border-radius: 5px;
+}
+
+.quick-copy-btn:hover {
+  color: #fff;             /* Sáng lên khi di chuột */
+  background: rgba(255,255,255,0.1);
+}
+
+.quick-copy-btn:active { 
+  transform: scale(0.9);   /* Hiệu ứng nhấn */
+  color: #44ff44;          /* Màu xanh khi copy thành công */
+}
