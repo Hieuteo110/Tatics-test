@@ -340,18 +340,39 @@ body { background-color: #000; color: white; font-family: sans-serif; }
   background: #0a0a0a;
 }
 
+/* --- SỬA LỖI Ổ KHÓA & HIỂN THỊ ẢNH --- */
+
 .comp-champ {
   aspect-ratio: 1/1;
   border-radius: 8px;
   overflow: hidden;
   border: 2px solid transparent;
+  
+  /* [QUAN TRỌNG] Dòng này giữ ổ khóa nằm đúng trong khung tướng */
+  position: relative; 
+  z-index: 1; /* Đảm bảo nổi lên trên nền */
 }
 
+/* Đảm bảo ảnh nằm dưới icon khóa */
 .comp-champ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: absolute; /* Giúp ảnh lấp đầy tuyệt đối */
+  top: 0; left: 0;
+  z-index: 0;
 }
+
+/* Chỉnh lại vị trí ổ khóa cho đẹp hơn trong khung nhỏ */
+.cost1lock::after, .cost2lock::after, .cost3lock::after, 
+.cost4lock::after, .cost5lock::after, .cost7lock::after {
+  width: 14px;  /* Nhỏ lại chút cho vừa khung comp */
+  height: 14px;
+  top: 2px;     /* Sát góc hơn */
+  right: 2px;
+  z-index: 10;  /* Luôn nằm trên cùng */
+}
+
 
 /* Viền màu theo cost */
 .comp-champ.cost1 { border-color: #808080; }
