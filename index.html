@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TFT Guide</title>
+  <title>TFT Guide - Tướng</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -37,7 +37,8 @@
 
   <div id="champ-modal" class="modal">
     <div class="modal-content">
-      <span class="close-btn">&times;</span> <div class="modal-header">
+      <span class="close-btn">&times;</span>
+      <div class="modal-header">
         <img id="m-image" src="" class="modal-img">
         <div class="modal-info">
           <h2 id="m-name">Tên Tướng</h2>
@@ -51,58 +52,72 @@
         <span id="m-unlock-text">...</span>
       </div>
       
-      
-   <div class="section-title">Thông Số</div>
-   <div class="stats-grid">
-     <div class="stat-item">
-       <span class="stat-label">Máu</span>
-       <span id="m-H" class="stat-value">-</span>
-     </div>
-     <div class="stat-item">
-       <span class="stat-label">Năng Lượng</span>
-       <span id="m-mana" class="stat-value">-</span>
-     </div>
-     
-     <div class="stat-item">
-       <span class="stat-label">Giáp</span>
-       <span id="m-AM" class="stat-value">-</span>
-     </div>
-     <div class="stat-item">
-       <span class="stat-label">Kháng Phép</span>
-       <span id="m-MR" class="stat-value">-</span>
-     </div>
-     
-     <div class="stat-item">
-       <span class="stat-label">Vật Lý</span>
-       <span id="m-AD" class="stat-value">-</span>
-     </div>
-     <div class="stat-item">
-       <span class="stat-label">Phép Thuật</span>
-       <span id="m-AP" class="stat-value">-</span>
-     </div>
-     
-     <div class="stat-item">
-       <span class="stat-label">Tốc Đánh</span>
-       <span id="m-AS" class="stat-value">-</span>
-     </div>
-     <div class="stat-item">
-       <span class="stat-label">Tầm Đánh</span>
-       <span id="m-Range" class="stat-value">-</span>
-     </div>
-   </div>
-         <div class="section-title">KĨ NĂNG</div>
-<div class="skill-container">
-  <h3 id="m-skill-name" class="skill-name-title">Tên Kỹ Năng</h3>
-  <div class="skill-row">
-    <img id="m-skill-icon" src="" class="skill-img">
-    <div id="m-ability" class="skill-desc-text">...</div>
-  </div>
-</div>
+      <div class="section-title">Thông Số</div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-label">Máu</span>
+          <span id="m-H" class="stat-value">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Năng Lượng</span>
+          <span id="m-mana" class="stat-value">-</span>
+        </div>
+        
+        <div class="stat-item">
+          <span class="stat-label">Giáp</span>
+          <span id="m-AM" class="stat-value">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Kháng Phép</span>
+          <span id="m-MR" class="stat-value">-</span>
+        </div>
+        
+        <div class="stat-item">
+          <span class="stat-label">Vật Lý</span>
+          <span id="m-AD" class="stat-value">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Phép Thuật</span>
+          <span id="m-AP" class="stat-value">-</span>
+        </div>
+        
+        <div class="stat-item">
+          <span class="stat-label">Tốc Đánh</span>
+          <span id="m-AS" class="stat-value">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Tầm Đánh</span>
+          <span id="m-Range" class="stat-value">-</span>
+        </div>
+      </div>
 
+      <div class="section-title">KĨ NĂNG</div>
+      <div class="skill-container">
+        <h3 id="m-skill-name" class="skill-name-title">Tên Kỹ Năng</h3>
+        <div class="skill-row">
+          <img id="m-skill-icon" src="" class="skill-img">
+          <div id="m-ability" class="skill-desc-text">...</div>
+        </div>
+      </div>
+    </div>
   </div>
-<script src="data/stats.js"></script>
-<script src="data/champs.js"></script>
-<script src="data/traits.js"></script>
+
+  <!-- Navigation Menu -->
+  <nav class="nav-menu">
+    <a href="index.html" class="nav-item active">
+      <i class="fas fa-users"></i>
+      <span>Tướng</span>
+    </a>
+
+    <a href="#" class="nav-item" onclick="alert('Tính năng đang phát triển!'); return false;">
+      <i class="fas fa-trophy"></i>
+      <span>Đội Hình</span>
+    </a>
+  </nav>
+
+  <script src="data/champs.js"></script>
+  <script src="data/stats.js"></script>
+  <script src="data/api-manager.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

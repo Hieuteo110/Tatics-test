@@ -1,44 +1,82 @@
-// --- BIẾN TOÀN CỤC ---
+// ============================================
+// TFT GUIDE - SCRIPT HIỂN THỊ (API VERSION)
+// ============================================
+
 let currentFilterCost = 0; 
 let currentSearchKeyword = '';
+let CHAMP_DETAILS = {};
+let TRAIT_ICONS = {};
+let isDataLoaded = false;
 
 // --- HÀM FORMAT TỔNG ---
+// (Lưu ý: api-manager.js đã tự chèn thẻ img rồi, hàm này chỉ để hỗ trợ các trường hợp khác nếu cần)
 function formatTotal(text) {
   if (!text) return "";
-  const ALL_ICONS = { ...STAT_ICONS, ...TRAIT_ICONS };
+  const statsIcons = window.STAT_ICONS || {}; 
+  const ALL_ICONS = { ...statsIcons, ...TRAIT_ICONS };
   for (const [name, path] of Object.entries(ALL_ICONS)) {
-    const placeholder = `[${name}]`;
     const imgTag = `<img src="${path}" class="inline-icon" alt="${name}">`;
-    text = text.split(placeholder).join(imgTag);
+    text = text.split(`[${name}]`).join(imgTag);
+    text = text.split(`scale${name}`).join(imgTag);
   }
   return text;
 }
 
-// --- HÀM TỰ ĐỘNG TẠO LINK SKILL (MỚI) ---
-function getAutoSkillIcon(champImagePath) {
-  if (!champImagePath) return "";
-  // Lấy tên file: "assets/face/champ/wukong.avif" -> "wukong.avif"
-  const fileName = champImagePath.split('/').pop();
-  // Bỏ đuôi: "wukong"
-  let cleanName = fileName.split('.')[0];
-  // Viết hoa chữ đầu: "Wukong"
-  cleanName = cleanName.charAt(0).toUpperCase() + cleanName.slice(1);
-  // Trả về: "assets/skills/TFT16_Wukong.jpg"
-  return `assets/skills/TFT16_${cleanName}.jpg`;
+// Loading Screen
+function showLoading(show = true) {
+  let loadingDiv = document.getElementById('loading-screen');
+  if (!loadingDiv) {
+    loadingDiv = document.createElement('div');
+    loadingDiv.id = 'loading-screen';
+    loadingDiv.style.cssText = `
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9); z-index: 9999;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+    `;
+    loadingDiv.innerHTML = `<div style="font-size:50px;animation:spin 1s infinite">⚙️</div><h2 style="color:white;margin-top:20px">Đang tải dữ liệu...</h2><style>@keyframes spin{to{transform:rotate(360deg)}}</style>`;
+    document.body.appendChild(loadingDiv);
+  }
+  loadingDiv.style.display = show ? 'flex' : 'none';
 }
 
-// 1. RENDER
+// INIT DATA
+async function initializeData() {
+  showLoading(true);
+  try {
+    const data = await window.DataDragonAPI.loadAllData();
+    CHAMP_DETAILS = data.champions;
+    TRAIT_ICONS = data.traits;
+    
+    if (Object.keys(CHAMP_DETAILS).length === 0) {
+      alert('Lỗi: Không tìm thấy dữ liệu tướng!');
+    } else {
+      isDataLoaded = true;
+      renderChampions();
+    }
+  } catch (error) {
+    console.error(error);
+    alert('Lỗi kết nối server!');
+  } finally {
+    showLoading(false);
+  }
+}
+
+// RENDER
 function renderChampions() {
   const container = document.getElementById('grid-container');
   if (!container) return;
+  
+  if (!isDataLoaded) {
+    container.innerHTML = '<p style="color:white;text-align:center">Đang tải...</p>'; return;
+  }
   container.innerHTML = ''; 
 
   for (const [name, data] of Object.entries(CHAMP_DETAILS)) {
     if (currentFilterCost !== 0 && data.cost !== currentFilterCost) continue;
     if (currentSearchKeyword && !name.toLowerCase().includes(currentSearchKeyword)) continue;
 
-    let costClass = `cost${data.cost}`;
-    if (data.unlockText) costClass += 'lock'; 
+    let costClass = `cost${data.cost}`; 
+    if (data.unlockText) costClass += 'lock';
 
     const card = document.createElement('div');
     card.className = 'champ-card';
@@ -46,7 +84,7 @@ function renderChampions() {
 
     card.innerHTML = `
       <div class="image-container ${costClass}">
-         <img src="${data.image}" alt="${name}">
+         <img src="${data.image}" alt="${name}" loading="lazy">
       </div>
       <p class="champ-name">${name}</p>
     `;
@@ -54,7 +92,7 @@ function renderChampions() {
   }
 }
 
-// 2. FILTER
+// FILTER
 function filterCost(cost) {
   currentFilterCost = cost;
   document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
@@ -63,75 +101,31 @@ function filterCost(cost) {
   renderChampions();
 }
 
-// 3. POPUP (Đã tích hợp tự động ảnh skill)
+// POPUP (ĐÃ FIX LỖI GIÁ TIỀN)
 function showPopup(name, clickedElement) {
   const modal = document.getElementById('champ-modal');
-  if (!modal) return;
-  
+  const data = CHAMP_DETAILS[name];
+  if (!data || !modal) return;
+
   if (clickedElement) {
     const rect = clickedElement.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
     const content = modal.querySelector('.modal-content');
-    content.style.transformOrigin = `${centerX}px ${centerY}px`;
+    content.style.transformOrigin = `${rect.left + rect.width/2}px ${rect.top + rect.height/2}px`;
   }
 
-  const data = CHAMP_DETAILS[name];
-  if (!data) return;
-
-  // Header
   document.getElementById('m-name').innerHTML = name;
   document.getElementById('m-image').src = data.image;
-  
-  // --- XỬ LÝ KỸ NĂNG (TỰ ĐỘNG HÓA) ---
-  const sName = data.skillName || "Kỹ năng";
-  
-  // Tự động sinh link ảnh skill nếu trong dữ liệu không có
-  let sIcon = data.skillIcon;
-  if (!sIcon) {
-    sIcon = getAutoSkillIcon(data.image);
+
+  // --- [FIX] CẬP NHẬT GIÁ TIỀN TẠI ĐÂY ---
+  const costElement = document.getElementById('m-cost');
+  if (costElement) {
+      costElement.innerHTML = data.cost;
+      // Nếu muốn đổi màu số tiền theo cost, có thể thêm class nếu cần
+      // costElement.className = `text-cost-${data.cost}`; 
   }
-
-  document.getElementById('m-skill-name').innerText = sName;
-  document.getElementById('m-skill-icon').src = sIcon;
-  // Xử lý lỗi nếu ảnh skill tự sinh không tồn tại (Fallback về ảnh tướng)
-  document.getElementById('m-skill-icon').onerror = function() {
-      this.src = data.image; 
-  };
-
-  document.getElementById('m-ability').innerHTML = formatTotal(data.ability);
-
-  // Hệ Tộc
-  const traitsContainer = document.getElementById('m-traits');
-  traitsContainer.innerHTML = ''; 
-  const traitsList = data.traits.split(','); 
-  traitsList.forEach(traitName => {
-    traitName = traitName.trim();
-    const iconUrl = TRAIT_ICONS[traitName]; 
-    if (iconUrl) {
-      const badge = document.createElement('div');
-      badge.className = 'trait-badge';
-      badge.innerHTML = `<img src="${iconUrl}" class="trait-icon"> ${traitName}`;
-      traitsContainer.appendChild(badge);
-    } else {
-      const span = document.createElement('span');
-      span.innerHTML = traitName;
-      span.style.marginRight = "10px";
-      traitsContainer.appendChild(span);
-    }
-  });
-
-  // Thông số
-  const s = data.stats || {};
-  document.getElementById('m-H').innerHTML = formatTotal(s.health || "-");
-  document.getElementById('m-mana').innerHTML = formatTotal(s.mana || "-");
-  document.getElementById('m-AM').innerHTML = formatTotal(s.armor || "-");
-  document.getElementById('m-MR').innerHTML = formatTotal(s.mr || "-");
-  document.getElementById('m-AD').innerHTML = formatTotal(s.damage || "-");
-  document.getElementById('m-AP').innerHTML = formatTotal(s.ap || "-");
-  document.getElementById('m-AS').innerHTML = formatTotal(s.speed || "-");
-  document.getElementById('m-Range').innerHTML = formatTotal(s.range || "-");
-
+  // ----------------------------------------
+  
+  // Note Unlock
   const unlockBox = document.getElementById('m-unlock-note');
   if (data.unlockText) {
     unlockBox.style.display = "flex";
@@ -140,40 +134,60 @@ function showPopup(name, clickedElement) {
     unlockBox.style.display = "none";
   }
 
+  // Skill & Stats
+  document.getElementById('m-skill-name').innerText = data.skillName;
+  document.getElementById('m-skill-icon').src = data.skillIcon;
+  document.getElementById('m-ability').innerHTML = data.ability;
+
+  const traitsContainer = document.getElementById('m-traits');
+  traitsContainer.innerHTML = ''; 
+  const traitsList = data.traits.split(',');
+  traitsList.forEach(tName => {
+    tName = tName.trim();
+    const iconUrl = TRAIT_ICONS[tName];
+    if (iconUrl) {
+      const badge = document.createElement('div');
+      badge.className = 'trait-badge';
+      badge.innerHTML = `<img src="${iconUrl}" class="trait-icon"> ${tName}`;
+      traitsContainer.appendChild(badge);
+    }
+  });
+
+  const s = data.stats;
+  // api-manager.js đã tự thêm thẻ <img> vào s.health, s.mana... rồi nên chỉ cần gán vào
+  document.getElementById('m-H').innerHTML = s.health;
+  document.getElementById('m-mana').innerHTML = s.mana;
+  document.getElementById('m-AM').innerHTML = s.armor;
+  document.getElementById('m-MR').innerHTML = s.mr;
+  document.getElementById('m-AD').innerHTML = s.damage;
+  document.getElementById('m-AP').innerHTML = s.ap;
+  document.getElementById('m-AS').innerHTML = s.speed;
+  document.getElementById('m-Range').innerHTML = s.range;
+
   modal.classList.add('active');
 }
 
-// 4. CLOSE
 function closePopup() {
   const modal = document.getElementById('champ-modal');
   if (modal) modal.classList.remove('active');
 }
 
-// 5. INIT
+// INIT
 document.addEventListener('DOMContentLoaded', function() {
-  renderChampions();
+  initializeData();
   
   const closeBtn = document.querySelector('.close-btn');
   if (closeBtn) closeBtn.addEventListener('click', closePopup);
-  window.onclick = function(event) {
-    if (event.target == document.getElementById('champ-modal')) closePopup();
-  };
+  window.onclick = function(e) { if (e.target == document.getElementById('champ-modal')) closePopup(); };
 
   const searchBtn = document.getElementById('search-btn');
   const searchInput = document.getElementById('search-input');
-
   if (searchBtn && searchInput) {
     searchBtn.addEventListener('click', () => {
       searchInput.classList.toggle('active');
-      if (searchInput.classList.contains('active')) {
-        searchInput.focus();
-      } else {
-        searchInput.value = ''; 
-        currentSearchKeyword = ''; 
-        renderChampions();
-      }
+      if (searchInput.classList.contains('active')) searchInput.focus();
+      else { searchInput.value = ''; currentSearchKeyword = ''; renderChampions(); }
     });
-
     searchInput.addEventListener('keyup', (e) => {
       currentSearchKeyword = e.target.value.toLowerCase();
       renderChampions();
